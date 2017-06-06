@@ -1,0 +1,21 @@
+body{
+	background-image: url("back.jpg");
+}
+
+#gobtn{
+background-color: coral;
+}
+.bodypanel{
+	width: 600px;
+	margin: 0 auto;
+}
+.convertBox{
+	text-align: center;
+}
+.series{
+	text-align: center;
+
+}
+.magicBox{
+	text-align: center;
+}

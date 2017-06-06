@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Java Script Project</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="bodypanel">
+  <div class="convertBox">
+
+Convert: <input type="text" id="con" size="10" value="0" />
+  <select id="convertOpt" name="weight">
+    <option value="lb to kg">lb to kg</option>
+    <option value="kg to lb">kg to lb</option>
+  </select>
+<button id="gobtn" onclick="convert();">Go </button> <span id="idiot"></span>
+</div>
+<script>
+function convert() {
+var val = document.getElementById('convertOpt').value;
+ if(val=='kg to lb') {
+  var nearExact = document.getElementById('con').value/0.45359237;
+    var lbs = Math.floor(nearExact);
+    document.getElementById("idiot").innerHTML=lbs;
+ } else {
+  var lbsToKg=Math.floor(document.getElementById('con').value*0.45359237);
+  document.getElementById("idiot").innerHTML=lbsToKg;
+ }
+}
+</script>
+<br>
+<br>
+<div class="series"  >
+<h1>Series of Numbers</h1>
+Input Series of Number:<!-- <form name="myform" action="javascript:handleIt()"> -->
+      <input name="Submit" id="numSeries" type="text" onkeyup="maxVal();
+      minVal();sumVal();avgVal();revVal();"  />
+   <br>
+Max: <span id="maxSpan" ></span>
+<br>
+Min:<span id="minSpan"> </span>
+<br> 
+Sum: <span id="sumSpan"> </span>
+<br>
+Average: <span id="avgSpan"> </span>
+<br>
+Reverse Order: <span id="revSpan"> </span>
+</div>
+<script>
+function maxVal(){
+var x=document.getElementById("numSeries").value;
+var array=x.split(',');
+var max=Math.max.apply(Math,array);
+document.getElementById("maxSpan").innerHTML=max;
+}
+
+function minVal(){
+var x=document.getElementById("numSeries").value;
+var array=x.split(',');
+var min = 1000000000000000;
+for(var n=0;n<array.length;n++){
+  if(min>parseInt(array[n])){
+    min=parseInt(array[n]);
+  }
+}
+document.getElementById("minSpan").innerHTML=min;
+}
+function sumVal(){
+var x=document.getElementById("numSeries").value;
+var array=x.split(',');
+var sum=0;
+for (var n= 0; n<array.length;n++){
+ sum=sum+parseInt(array[n]);
+}
+document.getElementById("sumSpan").innerHTML=sum;
+}
+
+function avgVal(){
+var x=document.getElementById("numSeries").value;
+var array=x.split(',');
+var sum=0;
+for (var n= 0; n<array.length;n++){
+ sum=sum+parseInt(array[n]);
+}
+document.getElementById("avgSpan").innerHTML=(sum/array.length);
+}
+
+function revVal(){
+var x=document.getElementById("numSeries").value; 
+var rev='';
+var array=x.split(',');
+for(var n=array.length-1;n>=0;n--){
+rev = rev.concat(array[n], ',');
+}
+document.getElementById("revSpan").innerHTML=rev;
+}
+function clearBox(){
+var st=document.getElementById("magictxt").value="";
+}
+var toggle = 0;
+function capitalizeBox(){
+  // var toggle = 1;
+  toggle = toggle+1;
+  var str=document.getElementById("magictxt").value;
+// document.getElementById("magictxt").innerHTML=str.toUpperCase();
+// document.getElementById("magictxt").innerHTML=str.toLowerCase();
+if(toggle==1){
+   document.getElementById("magictxt").value=str.toUpperCase();
+ }
+
+  else if(toggle = 2){
+   document.getElementById("magictxt").value=str.toLowerCase();
+   toggle=toggle-2;
+ }
+}
+
+function sortBox(){
+  console.log("I am here :P");  
+var s = document.getElementById("magictxt").value;
+document.getElementById("magictxt").value=s.split("\n").sort().join("\n");
+
+// var s = document.getElementById("magictxt"); 
+// s.value = s.value.split("\n").sort().join("\n");
+// document.getElementById("magictxt").innerHTML=s.value;
+}
+
+function revBox(){
+  var s = document.getElementById("magictxt").value;
+document.getElementById("magictxt").value=s.split("\n").reverse().join("\n");
+}
+
+function stripBox(){
+
+  var str = document.getElementById("magictxt").value;
+    str = str.replace(/\s/g, "") 
+    document.getElementById("magictxt").value = str;
+}
+
+function addBox(){
+
+var str = document.getElementById("magictxt").value;
+
+var array = str.split("\n");
+
+for ( var i=0;  i<array.length;  i++) {
+
+array[i] = '1' + array[i];
+}
+
+
+
+document.getElementById("magictxt").value = array.join("\n");
+
+}
+
+function shuffleBox(){
+
+var str = document.getElementById("magictxt").value;
+
+var array = str.split("\n");
+
+var item = array[Math.floor(Math.random()*array.length)];
+
+   var j, x, i;
+    for (i = array.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = array[i - 1];
+        array[i - 1] = array[j];
+        array[j] = x;
+}
+document.getElementById("magictxt").value = array.join("\n");
+
+}
+
+</script>
+
+
+<div class="magicBox">
+<h2>Magic Number !</h2>
+<textarea id="magictxt" type="text" rows="14" cols="80">
+</textarea>
+</div>
+<input value="Clear" type="button" onclick="clearBox()"/>
+
+<input value="Capitalize" type="button" onclick="capitalizeBox()"/>
+
+<input value="Sort" type="button" onclick="sortBox()"/>
+
+<input value="Reverse" type="button" onclick="revBox()"/>
+
+<input value="Strip Blank" type="button" onclick="stripBox()"/>
+
+<input value="Add Num" type="button" onclick="addBox()"/>
+
+<input value="Shuffle" type="button" onclick="shuffleBox()"/>
+
+<link rel="stylesheet" href="stylesheet.css">
+
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+
+<div class="boxed">
+
+<h2 id= "box">
+</h2>
+ </div>
+
+<div> 
+<script language="JavaScript">
+
+var Quotation=new Array() 
+
+
+
+
+Quotation[0] = "Time is of the essence! Comb your hair.";
+
+Quotation[1] = "Sanity is a golden apple with no shoelaces.";
+
+Quotation[2] = "Repent! The end is coming, $9.95 at Amazon.";
+
+Quotation[3] = "Honesty blurts where deception sneezes.";
+
+Quotation[4] = "Pastry satisfies where art is unavailable.";
+
+Quotation[5] = "Delete not, lest you, too, be deleted.";
+
+Quotation[6] = "O! Youth! What a pain in the backside.";
+
+Quotation[7] = "Wishes are like goldfish with propellors.";
+
+Quotation[8] = "Love the river's \"beauty\", but live on a hill.";
+
+Quotation[9] = "Invention is the mother of too many useless toys.";
+
+
+// ======================================
+// Do not change anything below this line
+// ======================================
+
+function ModifiedBoxRed(){
+var Q = Quotation.length;
+
+var whichQuotation=Math.round(Math.random()*(Q-1));
+
+var x=document.getElementById("box");
+
+x.innerHTML=Quotation[whichQuotation];
+
+x.style.color='red';
+x.style.background='yellow';
+
+}
+
+function ModifiedBoxBlue(){
+
+var Q = Quotation.length;
+
+var whichQuotation=Math.round(Math.random()*(Q-1));
+
+var x=document.getElementById("box");
+
+x.innerHTML=Quotation[whichQuotation];
+
+x.style.color='blue';
+
+x.style.background='green';
+
+}
+function ModifiedBoxGreen(){
+var Q = Quotation.length;
+
+var whichQuotation=Math.round(Math.random()*(Q-1));
+
+var x=document.getElementById("box");
+
+x.innerHTML=Quotation[whichQuotation];
+
+x.style.color='green';
+x.style.background='yellow';
+
+}
+function ModifiedBoxYellow(){
+var Q = Quotation.length;
+
+var whichQuotation=Math.round(Math.random()*(Q-1));
+
+var x=document.getElementById("box");
+
+x.innerHTML=Quotation[whichQuotation];
+
+x.style.color='yellow';
+
+x.style.background='pink';
+}
+</script>
+
+<input value="red" type="button" onclick="ModifiedBoxRed()"/>
+
+<input value="blue" type="button" onclick="ModifiedBoxBlue()"/>
+
+<input value="green" type="button" onclick="ModifiedBoxGreen()"/>
+
+<input value="yellow" type="button" onclick="ModifiedBoxYellow()"/>
+
+
+</br>
+</br>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
